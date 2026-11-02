@@ -179,7 +179,7 @@ public:
     void shiftLeft(int x)
     {
         shiftsubleft(x, x, mysize - 1);
-        mysize-=x;
+        mysize -= x;
     }
     void rotateRight(int x)
     {
@@ -271,35 +271,38 @@ int main()
     a.set(2, 99);
     std::cout << "A:";
     a.display();
-    std::cout<<"MIN in A:"<<a.min()<<" MAX in A:"<<a.max()<<std::endl;
+    std::cout << "MIN in A:" << a.min() << " MAX in A:" << a.max() << std::endl;
     a.reverse();
-     std::cout << "A after reverse: ";
+    std::cout << "A after reverse: ";
     a.display();
     a.rotateRight(2);
-    std::cout<<"A rotate right by 2: ";
+    std::cout << "A rotate right by 2: ";
     a.display();
     a.rotateLeft(2);
-    std::cout<<"A rotate left by 2: ";
+    std::cout << "A rotate left by 2: ";
     a.display();
     a.shiftLeft(2);
-    std::cout<<"A shift left by 2: ";
+    std::cout << "A shift left by 2: ";
     a.display();
 
-    std::cout<<"B:";b.display();
+    std::cout << "B:";
+    b.display();
     b.shiftRight(2);
-    std::cout<<"B shift right by 2: ";
+    std::cout << "B shift right by 2: ";
     b.display();
 
-     std::cout <<std::endl<<std::endl<< "A:";
+    std::cout << std::endl
+              << std::endl
+              << "A:";
     a.display();
     std::cout << "B:";
     b.display();
     a.merge(b);
-    std::cout<<"A after merge with B: ";
+    std::cout << "A after merge with B: ";
     a.display();
-    
-    std::cout<<"SUM of A: "<<a.sum()<<" Size of a: "<<a.getSize()<<" AVG of A: "<<a.avg()<<std::endl;
-    
+
+    std::cout << "SUM of A: " << a.sum() << " Size of a: " << a.getSize() << " AVG of A: " << a.avg() << std::endl;
+
     // a.display();
     // b.display();
     std::cout << std::endl;
