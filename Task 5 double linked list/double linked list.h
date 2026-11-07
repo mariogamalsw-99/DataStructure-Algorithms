@@ -37,7 +37,7 @@ DoublelinkedList<T>::DoublelinkedList() : head(nullptr), tail(nullptr), dllSize(
 {
 }
 template <typename T>
-DoublelinkedList<T>::DoublelinkedList(T arr[], int size) : head(nullptr), tail(nullptr),dllSize(size)
+DoublelinkedList<T>::DoublelinkedList(T arr[], int size) : head(nullptr), tail(nullptr), dllSize(size)
 {
     if (size > 0)
     {
@@ -91,7 +91,7 @@ template <typename T>
 int DoublelinkedList<T>::count(T uData)
 {
     int c = 0;
-    NodeDou<T>* temp = head;
+    NodeDou<T> *temp = head;
     while (temp != nullptr)
     {
         if (temp->data == uData)
@@ -119,6 +119,10 @@ T DoublelinkedList<T>::min()
         }
         return min;
     }
+    else
+    {
+        return -1;
+    }
 }
 template <typename T>
 T DoublelinkedList<T>::max()
@@ -137,6 +141,10 @@ T DoublelinkedList<T>::max()
         }
         return max;
     }
+    else
+    {
+        return -1;
+    }
 }
 template <typename T>
 T DoublelinkedList<T>::sum()
@@ -151,6 +159,10 @@ T DoublelinkedList<T>::sum()
             temp = temp->next;
         }
         return sum;
+    }
+    else
+    {
+        return -1;
     }
 }
 template <typename T>
@@ -207,6 +219,10 @@ void DoublelinkedList<T>::insertBack(T userData)
         tail->next = newNode;
         newNode->prev = tail;
     }
+    else
+    {
+        head = newNode;
+    }
     tail = newNode;
     dllSize++;
 }
@@ -246,7 +262,7 @@ void DoublelinkedList<T>::remove(int index)
             {
                 temp = temp->next;
             }
-            temp->prev->next = temp -> next;
+            temp->prev->next = temp->next;
             temp->next->prev = temp->prev;
             delete temp;
         }
@@ -258,7 +274,7 @@ void DoublelinkedList<T>::remove(int index)
             {
                 temp = temp->prev;
             }
-            temp->prev->next = temp -> next;
+            temp->prev->next = temp->next;
             temp->next->prev = temp->prev;
             delete temp;
         }
@@ -268,20 +284,34 @@ void DoublelinkedList<T>::remove(int index)
 template <typename T>
 void DoublelinkedList<T>::deleteBack()
 {
-    NodeDou<T>* deleteNode = tail;
+    NodeDou<T> *deleteNode = tail;
     // Shift tail and clear tail next
     tail = tail->prev;
-    tail->next = nullptr;
+    if (tail != nullptr)
+    {
+        tail->next = nullptr;
+    }
+    else
+    {
+        head = nullptr;
+    }
     delete deleteNode;
     dllSize--;
 }
 template <typename T>
 void DoublelinkedList<T>::deleteFront()
 {
-    NodeDou<T>* deleteNode = head;
+    NodeDou<T> *deleteNode = head;
     // Shift head and clear head prev
     head = head->next;
-    head->prev = nullptr;
+    if (head != nullptr)
+    {
+        head->prev = nullptr;
+    }
+    else
+    {
+        tail = nullptr;
+    }
     delete deleteNode;
     dllSize--;
 }
