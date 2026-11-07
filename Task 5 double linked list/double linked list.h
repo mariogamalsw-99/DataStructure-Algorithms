@@ -28,6 +28,8 @@ public:
     void remove(int index);
     void deleteBack();
     void deleteFront();
+    T getFront();
+    T getBack();
 };
 //____________________Double LinkedList Class functions______________________
 template <typename T>
@@ -283,4 +285,21 @@ void DoublelinkedList<T>::deleteFront()
     delete deleteNode;
     dllSize--;
 }
+template <typename T>
+T DoublelinkedList<T>::getFront()
+{
+    if (!empty())
+        return head->data;
+    else
+        return -1;
+}
+template <typename T>
+T DoublelinkedList<T>::getBack()
+{
+    if (!empty())
+        return tail->data;
+    else
+        return -1;
+}
+
 #endif
