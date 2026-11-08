@@ -63,6 +63,22 @@ int countLeafDFSPostorderSubTree(TreeNode* head)
 
 }
 
+void CleanSubTree(TreeNode* head)
+{
+       if(head!=nullptr)
+       {
+           CleanSubTree(head->left);
+           CleanSubTree(head->right);
+          // std::cout<<"Clean "<<head->data<<std::endl;
+            delete head;
+       }
+       else
+       {
+
+       }
+
+}
+
 
 
 BTree::BTree()
@@ -117,6 +133,7 @@ BTree::BTree()
 }
 BTree::~BTree()
 {
+    CleanSubTree(root);
 }
 int BTree::countNodes()
 {
